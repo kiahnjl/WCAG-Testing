@@ -123,6 +123,27 @@
         <p>Jaws/IE/Windows: </p>
     </div>
 
+    <div role="application">
+        <h3>Example 5:</h3>
+        <p>Role application</p>
+        <table>
+            <tr>
+                <td tabindex="0" aria-label="This is A">A</td>
+                <td tabindex="0" aria-label="This is B">B</td>
+            </tr>
+            <tr>
+                <td tabindex="0" aria-label="This is C">C</td>
+                <td tabindex="0" aria-label="This is D">D</td>
+            </tr>
+        </table>
+
+        <h3>Results:</h3>
+        <p>VoiceOver/Chrome/Mac: Reads out the label</p>
+        <p>NVDA/Firefox/Windows: Reads out the label and row/col</p>
+        <p>NVDA/Chrome/Windows: Reads out the label and row/col</p>
+        <p>Jaws/IE/Windows: Reads out the label</p>
+    </div>
+
     <h3>Versions:</h3>
     <p>VoiceOver, Chrome 71, macOS 10.14.2</p>
     <p>NVDA, Firefox 65, Windows 10 Pro</p>
