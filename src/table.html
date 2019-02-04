@@ -23,8 +23,9 @@
         </table>
 
         <h3>Results:</h3>
-        <p>VoiceOver/Chrome/Mac: Cell is annouced as "A, group", etc.</p>
-        <p>NVDA/Firefox/Windows: Cell is annouced as Cell is annouced as "A, group", etc.</p>
+        <p>VoiceOver/Chrome/Mac: "A, group", etc.</p>
+        <p>NVDA/Firefox/Windows: "row 1 column 1", etc. Only the row/col which changed is included</p>
+        <p>NVDA/Firefox/Chrome: "A, row 1 column 1", etc.</p>
     </div>
 
     <div>
@@ -35,6 +36,7 @@
             <tr>
                 <th scope="col">H 1</th>
                 <th scope="col">H 2</th>
+                <th scope="col">H 3</th>
             </tr>
             <tr>
                 <th scope="row">H 3</th>
@@ -52,33 +54,27 @@
         <h3>Results:</h3>
         <p>VoiceOver/Chrome/Mac: does not read the headers</p>
         <p>NVDA/Firefox/Windows: reads out the header, still does not read cell content</p>
+        <p>NVDA/Firefox/Chrome: reads out the header and the cell</p>
     </div>
 
     <div>
         <h3>Example 3:</h3>
-        <p>Adding scope</p>
+        <p>Adding aria labels</p>
         <table>
-            <tbody>
             <tr>
-                <th scope="col">H 1</th>
-                <th scope="col">H 2</th>
+                <td tabindex="0" aria-label="This is A">A</td>
+                <td tabindex="0" aria-label="This is B">B</td>
             </tr>
             <tr>
-                <th scope="row">H 3</th>
-                <td tabindex="0">A</td>
-                <td tabindex="0">B</td>
+                <td tabindex="0" aria-label="This is C">C</td>
+                <td tabindex="0" aria-label="This is D">D</td>
             </tr>
-            <tr>
-                <th scope="row">H 4</th>
-                <td tabindex="0">C</td>
-                <td tabindex="0">D</td>
-            </tr>
-            </tbody>
         </table>
 
         <h3>Results:</h3>
-        <p>VoiceOver/Chrome/Mac: does not read the headers</p>
-        <p>NVDA/Firefox/Windows: reads out the header, still does not read cell content</p>
+        <p>VoiceOver/Chrome/Mac: reads only the aria label</p>
+        <p>NVDA/Firefox/Windows: reads the aria label, then the row/col</p>
+        <p>NVDA/Firefox/Chrome: reads the aria label, then the row/col</p>
     </div>
 
     <h3>Versions:</h3>
