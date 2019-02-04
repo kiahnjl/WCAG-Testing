@@ -7,29 +7,82 @@
 <body>
     <h3>Problem:</h3>
     <p>Need to be able to use Tab to land on table cells</p>
-    <h3>Example:</h3>
-    <table>
-        <tbody>
-        <tr>
-            <td tabindex="0">A</td>
-            <td tabindex="0">B</td>
-        </tr>
-        <tr>
-            <td tabindex="0">C</td>
-            <td tabindex="0">D</td>
-        </tr>
-        </tbody>
-    </table>
-    <h3>Results:</h3>
-    <p>
-        VoiceOver, Chrome 71, macOS 10.14.2:
-        When the cell is tabbed to the following is announced:
-        "A, group", etc.
-    </p>
-    <p>
-        NVDA, Firefox 65, Windows 10 Pro:
-        When the cell is tabbed to the following is announced:
-        "row m, column n", but only reads out what changed.
-    </p>
+
+    <div>
+        <h3>Example 1:</h3>
+        <p>Minimal markup</p>
+        <table>
+            <tr>
+                <td tabindex="0">A</td>
+                <td tabindex="0">B</td>
+            </tr>
+            <tr>
+                <td tabindex="0">C</td>
+                <td tabindex="0">D</td>
+            </tr>
+        </table>
+
+        <h3>Results:</h3>
+        <p>VoiceOver/Chrome/Mac: Cell is annouced as "A, group", etc.</p>
+        <p>NVDA/Firefox/Windows: Cell is annouced as Cell is annouced as "A, group", etc.</p>
+    </div>
+
+    <div>
+        <h3>Example 2:</h3>
+        <p>Adding scope</p>
+        <table>
+            <tbody>
+            <tr>
+                <th scope="col">H 1</th>
+                <th scope="col">H 2</th>
+            </tr>
+            <tr>
+                <th scope="row">H 3</th>
+                <td tabindex="0">A</td>
+                <td tabindex="0">B</td>
+            </tr>
+            <tr>
+                <th scope="row">H 4</th>
+                <td tabindex="0">C</td>
+                <td tabindex="0">D</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h3>Results:</h3>
+        <p>VoiceOver/Chrome/Mac: does not read the headers</p>
+        <p>NVDA/Firefox/Windows: reads out the header, still does not read cell content</p>
+    </div>
+
+    <div>
+        <h3>Example 3:</h3>
+        <p>Adding scope</p>
+        <table>
+            <tbody>
+            <tr>
+                <th scope="col">H 1</th>
+                <th scope="col">H 2</th>
+            </tr>
+            <tr>
+                <th scope="row">H 3</th>
+                <td tabindex="0">A</td>
+                <td tabindex="0">B</td>
+            </tr>
+            <tr>
+                <th scope="row">H 4</th>
+                <td tabindex="0">C</td>
+                <td tabindex="0">D</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h3>Results:</h3>
+        <p>VoiceOver/Chrome/Mac: does not read the headers</p>
+        <p>NVDA/Firefox/Windows: reads out the header, still does not read cell content</p>
+    </div>
+
+    <h3>Versions:</h3>
+    <p>VoiceOver, Chrome 71, macOS 10.14.2</p>
+    <p>NVDA, Firefox 65, Windows 10 Pro</p>
 </body>
 </html>
