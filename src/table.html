@@ -25,7 +25,8 @@
         <h3>Results:</h3>
         <p>VoiceOver/Chrome/Mac: "A, group", etc.</p>
         <p>NVDA/Firefox/Windows: "row 1 column 1", etc. Only the row/col which changed is included</p>
-        <p>NVDA/Firefox/Chrome: "A, row 1 column 1", etc.</p>
+        <p>NVDA/Chrome/Windows: "A, row 1 column 1", etc.</p>
+        <p>Jaws/IE/Windows: nothing, unless its the first time entering the table or before dialog pops up?</p>
     </div>
 
     <div>
@@ -54,7 +55,8 @@
         <h3>Results:</h3>
         <p>VoiceOver/Chrome/Mac: does not read the headers</p>
         <p>NVDA/Firefox/Windows: reads out the header, still does not read cell content</p>
-        <p>NVDA/Firefox/Chrome: reads out the header and the cell</p>
+        <p>NVDA/Chrome/Windows: reads out the header and the cell</p>
+        <p>Jaws/IE/Windows: </p>
     </div>
 
     <div>
@@ -74,11 +76,56 @@
         <h3>Results:</h3>
         <p>VoiceOver/Chrome/Mac: reads only the aria label</p>
         <p>NVDA/Firefox/Windows: reads the aria label, then the row/col</p>
-        <p>NVDA/Firefox/Chrome: reads the aria label, then the row/col</p>
+        <p>NVDA/Chrome/Windows: reads the aria label, then the row/col</p>
+        <p>Jaws/IE/Windows: </p>
+    </div>
+
+    <div>
+        <h3>Example 4:</h3>
+        <p>Programmatic focus</p>
+
+        <button id="e-four-trigger" tabindex="0">Trigger</button>
+        <table>
+            <tr>
+                <td class="e-four-cell" tabindex="0" aria-label="This is A">A</td>
+                <td class="e-four-cell" tabindex="0" aria-label="This is B">B</td>
+            </tr>
+            <tr>
+                <td class="e-four-cell" tabindex="0" aria-label="This is C">C</td>
+                <td class="e-four-cell" tabindex="0" aria-label="This is D">D</td>
+            </tr>
+        </table>
+
+        <script>
+            (function() {
+                var btn = document.getElementById("e-four-trigger");
+                var cells = document.getElementsByClassName("e-four-cell");
+                var nextCell = 0;
+
+                function focusCellsInTurn() {
+                    if(nextCell >= cells.length) {
+                        nextCell = 0;
+                        return;
+                    }
+                    cells[nextCell].focus();
+                    nextCell++;
+                    setTimeout(focusCellsInTurn, 2000);
+                }
+
+                btn.addEventListener("focus", focusCellsInTurn);
+            })();
+        </script>
+
+        <h3>Results:</h3>
+        <p>VoiceOver/Chrome/Mac: </p>
+        <p>NVDA/Firefox/Windows: </p>
+        <p>NVDA/Chrome/Windows: </p>
+        <p>Jaws/IE/Windows: </p>
     </div>
 
     <h3>Versions:</h3>
     <p>VoiceOver, Chrome 71, macOS 10.14.2</p>
     <p>NVDA, Firefox 65, Windows 10 Pro</p>
+    <p>Jaws 2019, IE 11, Windows 10 Pro</p>
 </body>
 </html>
