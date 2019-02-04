@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing table</title>
+</head>
+<body>
+    <h3>Problem:</h3>
+    <p>Need to be able to use Tab to land on table cells</p>
+    <h3>Example:</h3>
+    <table>
+        <tbody>
+        <tr>
+            <td tabindex="0">A</td>
+            <td tabindex="0">B</td>
+        </tr>
+        <tr>
+            <td tabindex="0">C</td>
+            <td tabindex="0">D</td>
+        </tr>
+        </tbody>
+    </table>
+    <h3>Results:</h3>
+    <p>
+        VoiceOver, Chrome 71, macOS 10.14.2:
+        When the cell is tabbed to the following is announced:
+        "A, group", etc.
+    </p>
+    <p>
+        NVDA, Firefox 65, Windows 10 Pro:
+        When the cell is tabbed to the following is announced:
+        "row m, column n", but only reads out what changed.
+    </p>
+</body>
+</html>
